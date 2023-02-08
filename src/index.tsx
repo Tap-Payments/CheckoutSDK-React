@@ -1,4 +1,7 @@
 import { NativeModules, Platform } from 'react-native';
+import type { CheckoutSDKConfig } from './models';
+export * from './models/enums';
+export * from './models';
 
 const LINKING_ERROR =
   `The package 'checkout-sdk-react-native' doesn't seem to be linked. Make sure: \n\n` +
@@ -17,6 +20,9 @@ const CheckoutSdkReactNative = NativeModules.CheckoutSdkReactNative
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return CheckoutSdkReactNative.multiply(a, b);
+export default function multiply(
+  sdkConfig: CheckoutSDKConfig
+): Promise<number> {
+  console.log('🚀 ~ file: index.tsx:22 ~ multiply ~ sdkConfig', sdkConfig);
+  return CheckoutSdkReactNative.multiply(1, 2);
 }
